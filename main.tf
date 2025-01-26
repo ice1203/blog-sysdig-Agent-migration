@@ -1,12 +1,8 @@
-locals {
-  prefix = "sysdigagt-migration"
-}
-
 module "main_vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "5.8.1"
 
-  name = "${local.prefix}-vpc"
+  name = "${var.prefix}-vpc"
   cidr = "172.18.0.0/16"
 
   azs             = ["ap-northeast-1a", "ap-northeast-1c", "ap-northeast-1d"]
@@ -47,7 +43,6 @@ module "fargate-orchestrator-agent" {
 
   tags = {
     description    = "Sysdig Serverless Agent Orchestrator"
-    GuardDutyManaged = "false"
   }
 }
 

@@ -8,13 +8,25 @@ variable "secure_api_token" {
     type = string
 }
 
-# 自身のSysdig SaaSリージョンのSecure Endpointの値（下記はus4の場合）
+# AWSリージョン
+variable "region" {
+    type = string
+    default = "ap-northeast-1"
+}
+
+# リソース名のプレフィックス
+variable "prefix" {
+    type = string
+    default = "sysdigagt-migration"
+}
+
+# 自身のSysdig SaaSリージョンのSecure Endpointの値
 variable "sysdig_secure_url" {
   type = string
   default = "https://us2.app.sysdig.com"
 }
 
-# 自身のSysdig SaaSリージョンのCollector Endpointの値（下記はus4の場合）
+# 自身のSysdig SaaSリージョンのCollector Endpointの値
 variable "collector_url" {
   type = string
   default = "ingest-us2.app.sysdig.com"
