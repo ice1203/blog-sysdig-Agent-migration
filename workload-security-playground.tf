@@ -30,8 +30,10 @@ data "sysdig_fargate_workload_agent" "containers_instrumented" {
   workload_agent_image = "quay.io/sysdig/workload-agent:latest"
 
   sysdig_access_key = var.access_key
-  orchestrator_host = module.fargate-orchestrator-agent.orchestrator_host
-  orchestrator_port = module.fargate-orchestrator-agent.orchestrator_port
+  # orchestrator_host = module.fargate-orchestrator-agent.orchestrator_host
+  # orchestrator_port = module.fargate-orchestrator-agent.orchestrator_port
+  collector_host = var.collector_url
+  collector_port = 6443
 }
 
 resource "aws_ecs_task_definition" "task_definition" {

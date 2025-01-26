@@ -23,26 +23,26 @@ module "main_vpc" {
 
 }
 
-module "fargate-orchestrator-agent" {
-  source  = "sysdiglabs/fargate-orchestrator-agent/aws"
-  version = "0.4.1"
+# module "fargate-orchestrator-agent" {
+#   source  = "sysdiglabs/fargate-orchestrator-agent/aws"
+#   version = "0.4.1"
 
-  vpc_id           = module.main_vpc.vpc_id
-  subnets          = module.main_vpc.public_subnets
+#   vpc_id           = module.main_vpc.vpc_id
+#   subnets          = module.main_vpc.public_subnets
 
-  access_key       = var.access_key
+#   access_key       = var.access_key
 
-  collector_host   = var.collector_url
-  collector_port   = 6443
+#   collector_host   = var.collector_url
+#   collector_port   = 6443
 
-  name             = "sysdig-orchestrator"
-  agent_image      = "quay.io/sysdig/orchestrator-agent:latest"
+#   name             = "sysdig-orchestrator"
+#   agent_image      = "quay.io/sysdig/orchestrator-agent:latest"
 
-  # True if the VPC uses an InternetGateway, false otherwise
-  assign_public_ip = true
+#   # True if the VPC uses an InternetGateway, false otherwise
+#   assign_public_ip = true
 
-  tags = {
-    description    = "Sysdig Serverless Agent Orchestrator"
-  }
-}
+#   tags = {
+#     description    = "Sysdig Serverless Agent Orchestrator"
+#   }
+# }
 
